@@ -1,4 +1,7 @@
 import 'package:dummy_tradebattle/Presentation/PredictBattle/JoinPredictBattleScreen.dart';
+import 'package:dummy_tradebattle/Presentation/SoloBattle/JoinSoloTab.dart';
+import 'package:dummy_tradebattle/Presentation/SoloBattle/JoinsoloScreen.dart';
+import 'package:dummy_tradebattle/Presentation/TimeBattle/TimeCompletedScreen.dart';
 import 'package:flutter/material.dart';
 
 class JoinScreen extends StatefulWidget {
@@ -80,12 +83,8 @@ class _JoinScreenState extends State<JoinScreen> with TickerProviderStateMixin {
         ),
         SliverFillRemaining(
           child: TabBarView(controller: _tabController, children: const [
-            Center(
-              child: Text("Solo"),
-            ),
-            Center(
-              child: Text("Time"),
-            ),
+            Joinsoloscreen(),
+            Timecompletedscreen(),
             Center(
               child: Text("League"),
             ),

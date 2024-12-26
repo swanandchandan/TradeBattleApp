@@ -13,7 +13,7 @@ class Tradebattlescreen extends StatefulWidget {
 class _TradebattlescreenState extends State<Tradebattlescreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
-  late ScrollController controller;
+  late ScrollController scrollController;
   late Animation<Color?> animation;
 
   @override
@@ -23,7 +23,7 @@ class _TradebattlescreenState extends State<Tradebattlescreen>
       length: 2,
       vsync: this,
     );
-    controller = ScrollController();
+    scrollController = ScrollController();
     animation = ColorTween(
       begin: const Color.fromRGBO(243, 103, 47, 1),
       end: null,
@@ -43,13 +43,14 @@ class _TradebattlescreenState extends State<Tradebattlescreen>
       // backgroundColor: animation.value,
       backgroundColor: Colors.white,
       body: NestedScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        // controller: scrollController,
+        // physics: const NeverScrollableScrollPhysics(),
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
               sliver: SliverAppBar(
-                expandedHeight: 230,
+                expandedHeight: 210,
                 backgroundColor:
                     innerBoxIsScrolled ? Colors.transparent : Colors.white,
                 shadowColor: Colors.transparent,

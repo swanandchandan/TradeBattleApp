@@ -2,7 +2,9 @@ import 'package:dummy_tradebattle/Presentation/PredictBattle/PredictBattleScreen
 import 'package:flutter/material.dart';
 
 class MyBattleScreen extends StatefulWidget {
-  const MyBattleScreen({super.key});
+  const MyBattleScreen({
+    super.key,
+  });
 
   @override
   State<MyBattleScreen> createState() => _MyBattleScreenState();
@@ -11,12 +13,13 @@ class MyBattleScreen extends StatefulWidget {
 class _MyBattleScreenState extends State<MyBattleScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
+  late ScrollController scrollController;
 
   final List<Color> _indicatorColors = [
-    Colors.red,
-    Colors.green,
-    Colors.blue,
-    Colors.orange,
+    const Color.fromRGBO(83, 71, 203, 1),
+    const Color.fromRGBO(0, 211, 169, 1),
+    const Color.fromRGBO(255, 81, 53, 1),
+    Colors.black,
   ];
 
   //  final List<Color> _textColors = [
@@ -36,6 +39,7 @@ class _MyBattleScreenState extends State<MyBattleScreen>
   @override
   void initState() {
     super.initState();
+    scrollController = ScrollController();
     _tabController =
         TabController(length: _indicatorColors.length, vsync: this);
 
@@ -48,6 +52,7 @@ class _MyBattleScreenState extends State<MyBattleScreen>
 
   @override
   void dispose() {
+    scrollController = ScrollController();
     _tabController.dispose();
     super.dispose();
   }
@@ -55,7 +60,7 @@ class _MyBattleScreenState extends State<MyBattleScreen>
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    // final double screenWidth = MediaQuery.of(context).size.width;
     return CustomScrollView(
       slivers: [
         SliverOverlapInjector(
@@ -144,7 +149,7 @@ class _MyBattleScreenState extends State<MyBattleScreen>
             ),
           ),
         ),
-        SliverToBoxAdapter(
+        SliverFillRemaining(
           child: SizedBox(
             height: screenHeight * 0.9,
             child: TabBarView(

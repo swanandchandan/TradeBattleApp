@@ -1,16 +1,16 @@
 import 'package:dummy_tradebattle/Presentation/PredictBattle/HimaliyanSageCard.dart';
+import 'package:dummy_tradebattle/Presentation/SoloBattle/JoinSoloTab.dart';
 
 import "package:flutter/material.dart";
 
-class Joinpredictbattlescreen extends StatefulWidget {
-  const Joinpredictbattlescreen({super.key});
+class Joinsoloscreen extends StatefulWidget {
+  const Joinsoloscreen({super.key});
 
   @override
-  State<Joinpredictbattlescreen> createState() =>
-      _JoinpredictbattlescreenState();
+  State<Joinsoloscreen> createState() => _JoinsoloscreenState();
 }
 
-class _JoinpredictbattlescreenState extends State<Joinpredictbattlescreen> {
+class _JoinsoloscreenState extends State<Joinsoloscreen> {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -19,9 +19,9 @@ class _JoinpredictbattlescreenState extends State<Joinpredictbattlescreen> {
       SliverOverlapInjector(
           handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
       SliverList.builder(
-        itemCount: 15,
+        itemCount: 10,
         itemBuilder: (context, index) {
-          return const JoinPredictCard();
+          return const Joinsolotab();
         },
       ),
     ]);
